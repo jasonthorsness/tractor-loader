@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "firsttris.vscode-jest-runner",
+        "ryanluker.vscode-coverage-gutters"
+      ]
+    }
+  }
+}

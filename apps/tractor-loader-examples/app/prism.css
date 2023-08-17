@@ -1,0 +1,239 @@
+/*
+https://raw.githubusercontent.com/PrismJS/prism-themes/master/themes/prism-coy-without-shadows.css
+https://raw.githubusercontent.com/PrismJS/prism-themes/master/themes/prism-lucario.css
+Updated
+*/
+
+/**
+ * Coy without shadows
+ * Based on Tim Shedor's Coy theme for prism.js
+ * Author: RunDevelopment
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: black;
+  border-left: 4px solid rgb(220, 220, 220);
+  border-radius: 3px;
+  margin-left: -4px;
+  margin-right: -4px;
+  padding-left: 4px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  overflow-x: auto;
+  font-family: Monaco, Consolas, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 0.9em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  position: relative;
+}
+
+pre[class*="language-"] > code {
+  display: block;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #7d8b99;
+}
+
+.token.punctuation {
+  color: #5f6364;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.function-name,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #c92c2c;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.function,
+.token.builtin,
+.token.inserted {
+  color: #2f9c0a;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable {
+  color: #a67f59;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword,
+.token.class-name {
+  color: #1990b8;
+}
+
+.token.regex,
+.token.important {
+  color: #e90;
+}
+
+.language-css .token.string,
+.style .token.string {
+  color: #a67f59;
+}
+
+.token.important {
+  font-weight: normal;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+@media (prefers-color-scheme: dark) {
+  /**
+ * Lucario Theme originally by Raphael Amorim [@raphamorim]
+ * https://github.com/raphamorim/lucario
+ *
+ * Ported for PrismJS by Christopher Kapic [@christopher-kapic]
+ */
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: #f8f8f2;
+    background-color: rgb(22, 22, 18);
+    border-left: 4px solid rgb(80, 80, 80);
+    border-radius: 3px;
+    margin-left: -4px;
+    margin-right: -4px;
+    padding-left: 4px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    overflow-x: auto;
+    font-family: Monaco, Consolas, "Andale Mono", "Ubuntu Mono", monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #5c98cd;
+  }
+
+  .token.punctuation {
+    color: #f8f8f2;
+  }
+
+  .namespace {
+    opacity: 0.7;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #f05e5d;
+  }
+
+  .token.boolean,
+  .token.number {
+    color: #bc94f9;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #fcfcd6;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string,
+  .token.variable {
+    color: #f8f8f2;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.function,
+  .token.class-name {
+    color: #66d8ef;
+  }
+
+  .token.keyword {
+    color: #6eb26e;
+  }
+
+  .token.regex,
+  .token.important {
+    color: #f05e5d;
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+
+  .token.italic {
+    font-style: italic;
+  }
+
+  .token.entity {
+    cursor: help;
+  }
+}
