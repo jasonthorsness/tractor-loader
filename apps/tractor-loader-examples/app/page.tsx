@@ -1,27 +1,29 @@
 import Image, { StaticImageData } from "next/image";
 import Prism from "../prism";
-import img_o from "./cat.jpg";
+import img_z from "./cat.jpg";
 import img_0 from "./cat.jpg?crop=400,1300,800,2200&tractor";
 import img_1 from "./cat.jpg?myrotate=145&crop=o-800,o-800,o800,o800&tractor";
 import img_2 from "./cat.jpg?aspect=16:9;position:left&tractor";
 import img_3 from "./cat.jpg?mybanner&tractor";
 import img_4 from "./cat.jpg?crop=0,400,0,400&tractor";
 import img_5 from "./cat.jpg?crop=20%,40%,w600,h500&tractor";
-import img_6 from "./cat.jpg?crop=-200,-200,-200,-200;background:red&tractor";
+import img_6 from "./cat.jpg?crop=-200,-200,-200,-200;background:rgb(0,100,0)&tractor";
 import img_7 from "./cat.jpg?crop=o-220,o-110,o220,o110,r56%,44%&tractor";
 import img_8 from "./cat.jpg?height=100&tractor";
 import img_9 from "./cat.jpg?width=120;kernel:nearest&tractor";
+
+import Nav from "./nav";
 
 // peer/example0
 // peer-checked/example0:block
 const ExampleImages_0 = () => {
   return (
     <ImageComparison
-      i="1"
-      a={img_o}
+      i="0"
+      a={img_z}
       b={img_0}
       t="crop=400,1300,800,2200"
-      e="To view live examples like this one, check the box next to the example."
+      e="Check the box to view live examples."
     />
   );
 };
@@ -32,7 +34,7 @@ const ExampleImages_1 = () => {
   return (
     <ImageComparison
       i="1"
-      a={img_o}
+      a={img_z}
       b={img_1}
       t="myrotate=145&crop=o-800,o-800,o800,o800"
       e="Rotate 145 degrees then crop to a 1600 by 1600 centered region"
@@ -46,7 +48,7 @@ const ExampleImages_2 = () => {
   return (
     <ImageComparison
       i="2"
-      a={img_o}
+      a={img_z}
       b={img_2}
       t="aspect=16:9;position:left"
       e="Apply a 16:9 aspect ratio aligned to the left side"
@@ -60,7 +62,7 @@ const ExampleImages_3 = () => {
   return (
     <ImageComparison
       i="3"
-      a={img_o}
+      a={img_z}
       b={img_3}
       t="./cat.jpg?mybanner&tractor"
       e="Apply the mybanner preset"
@@ -74,7 +76,7 @@ const ExampleImages_4 = () => {
   return (
     <ImageComparison
       i="4"
-      a={img_o}
+      a={img_z}
       b={img_4}
       t="crop=0,400,0,400"
       e="Crop 400 pixels from the top and bottom."
@@ -88,7 +90,7 @@ const ExampleImages_5 = () => {
   return (
     <ImageComparison
       i="5"
-      a={img_o}
+      a={img_z}
       b={img_5}
       t="crop=20%,40%,w600,h500"
       e="Crop to a 600 by 500 region offset 20% from the left and 40% from the top."
@@ -102,10 +104,10 @@ const ExampleImages_6 = () => {
   return (
     <ImageComparison
       i="6"
-      a={img_o}
+      a={img_z}
       b={img_6}
-      t="crop=-200,-200,-200,-200;background:red"
-      e="Crop to a region 200 px greater than the image size in all directions, filling with red."
+      t="crop=-200,-200,-200,-200;background:rgb(0,100,0)"
+      e="Crop to a region 200 px greater than the image size in all directions, filling with green."
     />
   );
 };
@@ -116,7 +118,7 @@ const ExampleImages_7 = () => {
   return (
     <ImageComparison
       i="7"
-      a={img_o}
+      a={img_z}
       b={img_7}
       t="crop=o-220,o-110,o220,o110,r56%,44%"
       e="Crop to a 440 by 220 region offset 56% from the right and 44% from the top."
@@ -127,7 +129,7 @@ const ExampleImages_7 = () => {
 // peer/example8
 // peer-checked/example8:block
 const ExampleImages_8 = () => {
-  return <ImageComparison i="8" a={img_o} b={img_8} t="height=100" e="Resize to 100 pixels high" />;
+  return <ImageComparison i="8" a={img_z} b={img_8} t="height=100" e="Resize to 100 pixels high" />;
 };
 
 // peer/example9
@@ -136,7 +138,7 @@ const ExampleImages_9 = () => {
   return (
     <ImageComparison
       i="9"
-      a={img_o}
+      a={img_z}
       b={img_9}
       t="width=120;kernel:nearest"
       e="Resize to 120 pixels wide with the nearest-neighbor kernel"
@@ -153,7 +155,7 @@ const ImageComparison = (props: {
 }) => {
   return (
     <>
-      <p className="mb-0 mt-0">{props.e}</p>
+      <p className="mb-0 mt-0 pt-2">{props.e}</p>
       <div className="block mb-2">
         <input
           id={`example${props.i}`}
@@ -208,88 +210,31 @@ const languages: languageType = Prism.languages as any;
 
 export default function Home() {
   return (
-    <main>
-      <article className="prose prose-sm sm:prose-md dark:prose-invert max-w-4xl p-1 sm:p-4 mx-auto">
-        <h1>🚜🌱 Tractor Loader</h1>
-        <p>
-          A webpack loader to help you with your crops and other image adjustments. Integrates
-          cleanly with the NextJS optimized image loader and works well with next dev.
-        </p>
-        <ExampleImages_0 />
-        <h2 className="">Contents</h2>
-        <ol>
-          <li>
-            <a href="#section-overview">Overview</a>
-            <ol>
-              <li>
-                <a href="#section-overview-why">Why?</a>
-              </li>
-              <li>
-                <a href="#section-overview-installation">Installation</a>
-              </li>
-              <li>
-                <a href="#section-overview-application">Application</a>
-              </li>
-              <li>
-                <a href="#section-overview-conventions">Conventions</a>
-                <ol>
-                  <li>
-                    <a href="#section-overview-conventions-units">Units</a>
-                  </li>
-                  <li>
-                    <a href="#section-overview-conventions-imagelayout">Image Layout</a>
-                  </li>
-                </ol>
-              </li>
-              <li>
-                <a href="#section-overview-extension">Extension</a>
-                <ol>
-                  <li>
-                    <a href="#section-overview-extension-operations">Operations</a>
-                  </li>
-                  <li>
-                    <a href="#section-overview-extension-presets">Presets</a>
-                  </li>
-                </ol>
-              </li>
-            </ol>
-          </li>
-          <li>
-            <a href="#section-operations">Operations</a>
-            <ol>
-              <li>
-                <a href="#section-operations-aspect">Aspect</a>
-              </li>
-              <li>
-                <a href="#section-operations-crop">Crop</a>
-              </li>
-              <li>
-                <a href="#section-operations-height">Height</a>
-              </li>
-              <li>
-                <a href="#section-operations-width">Width</a>
-              </li>
-            </ol>
-          </li>
-          <li>
-            <a href="#section-image-credits">Image Credits</a>
-          </li>
-        </ol>
-        <h2 id="section-overview">Overview</h2>
-        <h3 id="section-overview-why">Why?</h3>
-        <p>
-          The NextJS &lt;Image /&gt; documentation recommends using static image imports for local
-          images.
-        </p>
-        <JavaScript t={`import cat from "./cat.jpg";`} />
-        <p>This syntax provides a natural location to express image modifications.</p>
-        <JavaScript t={`import cat from "./cat.jpg?crop=0,300,0,200&tractor";`} />
-        <h3 id="section-overview-installation">Installation</h3>
-        <p>Install tractor-loader with your package manager of choice.</p>
-        <Text t={`npm install tractor-loader`} />
-        <p>Add it to the image pipeline in next.config.js.</p>
-        <JavaScript
-          t={`/** @type {import('next').NextConfig} */
+    <>
+      <main className="max-w-4xl mx-auto prose prose-sm sm:prose-md dark:prose-invert ">
+        <article className="px-2 sm:px-4">
+          <Nav />
+          <p className="mb-2">
+            Tractor Loader is a webpack loader to help you with your crops and other image
+            adjustments. This loader performs edits to images based on an inline URL syntax. It
+            integrates cleanly with the NextJS optimized image loader and works well with next dev.
+          </p>
+          <ExampleImages_0 />
+          <h2 id="section-overview">Overview</h2>
+          <h3 id="section-overview-why">Why?</h3>
+          <p>
+            The NextJS &lt;Image /&gt; documentation recommends using static image imports for local
+            images.
+          </p>
+          <JavaScript t={`import cat from "./cat.jpg";`} />
+          <p>This syntax provides a natural location to express image modifications.</p>
+          <JavaScript t={`import cat from "./cat.jpg?crop=0,300,0,200&tractor";`} />
+          <h3 id="section-overview-installation">Installation</h3>
+          <p>Install tractor-loader with your package manager of choice.</p>
+          <Text t={`npm install tractor-loader`} />
+          <p>Add it to the image pipeline in next.config.js.</p>
+          <JavaScript
+            t={`/** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (config, options) => {
     config.module.rules.forEach((rule) => {
@@ -312,10 +257,10 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;`}
-        />
-        <p>Add a new file tractor.d.ts to satisfy TypeScript.</p>
-        <TypeScript
-          t={`declare module "*&tractor" {
+          />
+          <p>Add a new file tractor.d.ts to satisfy TypeScript.</p>
+          <TypeScript
+            t={`declare module "*&tractor" {
   // StaticImageData from "next/image";
   const contents: {
     src: string;
@@ -327,83 +272,84 @@ module.exports = nextConfig;`}
   };
   export = contents;
 }`}
-        />
-        <h3 id="section-overview-application">Application</h3>
-        <p>
-          Tractor loader can be applied to any static image import by adding a query string ending
-          in &tractor, such as in the following example. Here 400 px is cropped from the top of the
-          image, then it is coerced to a 16:9 aspect ratio.
-        </p>
-        <JavaScript t={`import cat from "./cat.jpg?crop=400,0,0,0&aspect=16:9&tractor";`} />
-        <p>
-          The query string is interpreted as a sequence of operations which are applied from left to
-          right. The key of each key-value pair of the query string identifies an operation, and the
-          value is operation-specific configuration.
-        </p>
-        <h3 id="section-overview-conventions">Conventions</h3>
-        <h4 id="section-overview-conventions-units">Units</h4>
-        <p>
-          Default units are pixels. If a &apos;%&apos; sign is used, the unit is a percentage of
-          width or height depending on context.
-        </p>
-        <h4 id="section-overview-conventions-imagelayout">Image Layout</h4>
-        <p>
-          Tractor loader uses an (x, y) coordinate system where the top-left of the image is (0, 0)
-          and the bottom-right of the image is (width, height). The following shorthand applies to
-          image regions.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>code</th>
-              <th>name</th>
-              <th>meaning</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>t</td>
-              <td>top</td>
-              <td>y coordinate 0</td>
-            </tr>
-            <tr>
-              <td>b</td>
-              <td>bottom</td>
-              <td>y coordinate equal to image height</td>
-            </tr>
-            <tr>
-              <td>l</td>
-              <td>left</td>
-              <td>x coordinate 0</td>
-            </tr>
-            <tr>
-              <td>r</td>
-              <td>right</td>
-              <td>x coordinate equal to image width</td>
-            </tr>
-            <tr>
-              <td>w</td>
-              <td>width</td>
-              <td>image width</td>
-            </tr>
-            <tr>
-              <td>h</td>
-              <td>height</td>
-              <td>image height</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 id="section-overview-extension">Extension</h3>
-        <h4 id="section-overview-extension-operations">Operations</h4>
-        <p>
-          New operations must implement a &quot;parse&quot; method that takes the value from the
-          query string and returns a parsed value, and an &quot;apply&quot; method that takes that
-          value, the <a href="https://sharp.pixelplumbing.com/api-input">sharp metadata</a> for the
-          image, and a <a href="https://sharp.pixelplumbing.com/api-constructor">sharp instance</a>{" "}
-          representing the image, and returns a new sharp instance.
-        </p>
-        <JavaScript
-          t={`export interface Operation {
+          />
+          <h3 id="section-overview-application">Application</h3>
+          <p>
+            Tractor loader can be applied to any static image import by adding a query string ending
+            in &tractor, such as in the following example. Here 400 px is cropped from the top of
+            the image, then it is coerced to a 16:9 aspect ratio.
+          </p>
+          <JavaScript t={`import cat from "./cat.jpg?crop=400,0,0,0&aspect=16:9&tractor";`} />
+          <p>
+            The query string is interpreted as a sequence of operations which are applied from left
+            to right. The key of each key-value pair of the query string identifies an operation,
+            and the value is operation-specific configuration.
+          </p>
+          <h3 id="section-overview-conventions">Conventions</h3>
+          <h4 id="section-overview-conventions-units">Units</h4>
+          <p>
+            Default units are pixels. If a &apos;%&apos; sign is used, the unit is a percentage of
+            width or height depending on context.
+          </p>
+          <h4 id="section-overview-conventions-imagelayout">Image Layout</h4>
+          <p>
+            Tractor loader uses an (x, y) coordinate system where the top-left of the image is (0,
+            0) and the bottom-right of the image is (width, height). The following shorthand applies
+            to image regions.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>code</th>
+                <th>name</th>
+                <th>meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>t</td>
+                <td>top</td>
+                <td>y coordinate 0</td>
+              </tr>
+              <tr>
+                <td>b</td>
+                <td>bottom</td>
+                <td>y coordinate equal to image height</td>
+              </tr>
+              <tr>
+                <td>l</td>
+                <td>left</td>
+                <td>x coordinate 0</td>
+              </tr>
+              <tr>
+                <td>r</td>
+                <td>right</td>
+                <td>x coordinate equal to image width</td>
+              </tr>
+              <tr>
+                <td>w</td>
+                <td>width</td>
+                <td>image width</td>
+              </tr>
+              <tr>
+                <td>h</td>
+                <td>height</td>
+                <td>image height</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3 id="section-overview-extension">Extension</h3>
+          <h4 id="section-overview-extension-operations">Operations</h4>
+          <p>
+            New operations must implement a &quot;parse&quot; method that takes the value from the
+            query string and returns a parsed value, and an &quot;apply&quot; method that takes that
+            value, the <a href="https://sharp.pixelplumbing.com/api-input">sharp metadata</a> for
+            the image, and a{" "}
+            <a href="https://sharp.pixelplumbing.com/api-constructor">sharp instance</a>{" "}
+            representing the image, and returns a new sharp instance.
+          </p>
+          <JavaScript
+            t={`export interface Operation {
   parse: (v: string) => any;
   apply: (
     v: any,
@@ -411,13 +357,13 @@ module.exports = nextConfig;`}
     working: sharp.Sharp,
   ) => sharp.Sharp;
 }`}
-        />
-        <p>
-          New operations are registered via loader options. For example, here is a registration for
-          an operation to rotate an image.
-        </p>
-        <JavaScript
-          t={`// ... in next.config.js webpack configuration ...
+          />
+          <p>
+            New operations are registered via loader options. For example, here is a registration
+            for an operation to rotate an image.
+          </p>
+          <JavaScript
+            t={`// ... in next.config.js webpack configuration ...
 {
   loader: "tractor-loader",
   options: {
@@ -429,16 +375,18 @@ module.exports = nextConfig;`}
     }
   }
 },`}
-        />
-        <p>
-          A registered operation can be used in the query string together with other operations.
-        </p>
-        <ExampleImages_1 />
-        <p>Registered operations override built-in operations with the same name.</p>
-        <h4 id="section-overview-extension-presets">Presets</h4>
-        <p>Common sequences of operations can be named as presets in the webpack configuration.</p>
-        <JavaScript
-          t={`// ... in next.config.js webpack configuration ...
+          />
+          <p>
+            A registered operation can be used in the query string together with other operations.
+          </p>
+          <ExampleImages_1 />
+          <p>Registered operations override built-in operations with the same name.</p>
+          <h4 id="section-overview-extension-presets">Presets</h4>
+          <p>
+            Common sequences of operations can be named as presets in the webpack configuration.
+          </p>
+          <JavaScript
+            t={`// ... in next.config.js webpack configuration ...
 {
   loader: "tractor-loader",
   options: {
@@ -447,142 +395,143 @@ module.exports = nextConfig;`}
     }
   }
 },`}
-        />
-        <p>
-          Then the preset can be applied in the query string. The preset is expanded to its
-          component operations wherever it appears and can be mixed with other presets and
-          operations.
-        </p>
-        <ExampleImages_3 />
-        <h2 id="section-operations">Operations</h2>
-        <h3 id="section-operations-aspect">Aspect</h3>
-        <p>
-          Constrains an image to a specific aspect ratio by adjusting one of the image dimensions
-          while leaving the other unmodified. Performs the minimum adjustment necessary to achieve
-          the desired ratio. See{" "}
-          <a href="https://sharp.pixelplumbing.com/api-resize">sharp resize</a> for available
-          options.
-        </p>
-        <h4>Syntax</h4>
-        <Text
-          t={`aspect=w:h[;option:value]...
+          />
+          <p>
+            Then the preset can be applied in the query string. The preset is expanded to its
+            component operations wherever it appears and can be mixed with other presets and
+            operations.
+          </p>
+          <ExampleImages_3 />
+          <h2 id="section-operations">Operations</h2>
+          <h3 id="section-operations-aspect">Aspect</h3>
+          <p>
+            Constrains an image to a specific aspect ratio by adjusting one of the image dimensions
+            while leaving the other unmodified. Performs the minimum adjustment necessary to achieve
+            the desired ratio. See{" "}
+            <a href="https://sharp.pixelplumbing.com/api-resize">sharp resize</a> for available
+            options.
+          </p>
+          <h4>Syntax</h4>
+          <Text
+            t={`aspect=w:h[;option:value]...
 w:h      aspect ratio to apply
 options  sharp options`}
-        />
-        <h4>Examples</h4>
-        <ExampleImages_2 />
-        <h3 id="section-operations-crop">Crop</h3>
-        <p>
-          Crops an image to a target region. This uses a combination of{" "}
-          <a href="https://sharp.pixelplumbing.com/api-resize#extend">extract</a> and{" "}
-          <a href="https://sharp.pixelplumbing.com/api-resize#extend">extend</a>.
-        </p>
-        <h4>Syntax</h4>
-        <Text
-          t={`crop=l,t,r,b[,ox,oy][;option:value]...
+          />
+          <h4>Examples</h4>
+          <ExampleImages_2 />
+          <h3 id="section-operations-crop">Crop</h3>
+          <p>
+            Crops an image to a target region. This uses a combination of{" "}
+            <a href="https://sharp.pixelplumbing.com/api-resize#extend">extract</a> and{" "}
+            <a href="https://sharp.pixelplumbing.com/api-resize#extend">extend</a>.
+          </p>
+          <h4>Syntax</h4>
+          <Text
+            t={`crop=l,t,r,b[,ox,oy][;option:value]...
 l,t,r,b   left, top, right, bottom
 ox,oy     x and y for the 'o' origin
 options   sharp options
 `}
-        />
-        <p>
-          Each part is provided as an optional origin, followed by a value, followed by an optional
-          &apos;%&apos; to use percent units. For example, l20% refers to an edge offset 20% of the
-          image width from the left, while b100 refers to an edge offset 100 pixels from the bottom
-          (offset direction is flipped for r and b origins). When an origin is not provided, the
-          default origin for that part is applied.
-        </p>
-        <p>
-          By default the origin &apos;o&apos; is the image center point. If ox and oy are provided,
-          they redefine that point.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>part</th>
-              <th>valid origins</th>
-              <th>default origin</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>l</td>
-              <td>l, r, o</td>
-              <td>l</td>
-            </tr>
-            <tr>
-              <td>t</td>
-              <td>t, b, o</td>
-              <td>t</td>
-            </tr>
-            <tr>
-              <td>r</td>
-              <td>l, r, o, w</td>
-              <td>r</td>
-            </tr>
-            <tr>
-              <td>b</td>
-              <td>t, b, o, h</td>
-              <td>b</td>
-            </tr>
-            <tr>
-              <td>ox</td>
-              <td>l, r</td>
-              <td>l</td>
-            </tr>
-            <tr>
-              <td>oy</td>
-              <td>t, b</td>
-              <td>t</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4>Examples</h4>
-        <ExampleImages_4 />
-        <ExampleImages_5 />
-        <ExampleImages_6 />
-        <ExampleImages_7 />
-        <h3 id="section-operations-height">Height</h3>
-        <p>
-          Resizes an image to a height while preserving aspect ratio. See{" "}
-          <a href="https://sharp.pixelplumbing.com/api-resize">sharp resize</a> for available
-          options.
-        </p>
-        <h4>Syntax</h4>
-        <Text
-          t={`height=h[;option:value]...
+          />
+          <p>
+            Each part is provided as an optional origin, followed by a value, followed by an
+            optional &apos;%&apos; to use percent units. For example, l20% refers to an edge offset
+            20% of the image width from the left, while b100 refers to an edge offset 100 pixels
+            from the bottom (offset direction is flipped for r and b origins). When an origin is not
+            provided, the default origin for that part is applied.
+          </p>
+          <p>
+            By default the origin &apos;o&apos; is the image center point. If ox and oy are
+            provided, they redefine that point.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>part</th>
+                <th>valid origins</th>
+                <th>default origin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>l</td>
+                <td>l, r, o</td>
+                <td>l</td>
+              </tr>
+              <tr>
+                <td>t</td>
+                <td>t, b, o</td>
+                <td>t</td>
+              </tr>
+              <tr>
+                <td>r</td>
+                <td>l, r, o, w</td>
+                <td>r</td>
+              </tr>
+              <tr>
+                <td>b</td>
+                <td>t, b, o, h</td>
+                <td>b</td>
+              </tr>
+              <tr>
+                <td>ox</td>
+                <td>l, r</td>
+                <td>l</td>
+              </tr>
+              <tr>
+                <td>oy</td>
+                <td>t, b</td>
+                <td>t</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Examples</h4>
+          <ExampleImages_4 />
+          <ExampleImages_5 />
+          <ExampleImages_6 />
+          <ExampleImages_7 />
+          <h3 id="section-operations-height">Height</h3>
+          <p>
+            Resizes an image to a height while preserving aspect ratio. See{" "}
+            <a href="https://sharp.pixelplumbing.com/api-resize">sharp resize</a> for available
+            options.
+          </p>
+          <h4>Syntax</h4>
+          <Text
+            t={`height=h[;option:value]...
 h        height to apply
 options  sharp options`}
-        />
-        <h4>Examples</h4>
-        <ExampleImages_8 />
-        <h3 id="section-operations-width">Width</h3>
-        <p>
-          Resizes an image to a width while preserving aspect ratio. See{" "}
-          <a href="https://sharp.pixelplumbing.com/api-resize">sharp resize</a> for available
-          options.
-        </p>
-        <h4>Syntax</h4>
-        <Text
-          t={`width=w[;option:value]...
+          />
+          <h4>Examples</h4>
+          <ExampleImages_8 />
+          <h3 id="section-operations-width">Width</h3>
+          <p>
+            Resizes an image to a width while preserving aspect ratio. See{" "}
+            <a href="https://sharp.pixelplumbing.com/api-resize">sharp resize</a> for available
+            options.
+          </p>
+          <h4>Syntax</h4>
+          <Text
+            t={`width=w[;option:value]...
 w        width to apply
 options  sharp options`}
-        />
-        <h4>Examples</h4>
-        <ExampleImages_9 />
-        <h3 id="section-image-credits">Image Credits</h3>
-        <p>
-          Cat Photo by{" "}
-          <a href="https://unsplash.com/@miklevasilyev?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-            Mikhail Vasilyev
-          </a>{" "}
-          on{" "}
-          <a href="https://unsplash.com/photos/MEb2jandkbc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-            Unsplash
-          </a>
-        </p>
-        <div style={{ height: "90vh" }}>&nbsp;</div>
-      </article>
-    </main>
+          />
+          <h4>Examples</h4>
+          <ExampleImages_9 />
+          <h3 id="section-image-credits">Image Credits</h3>
+          <p>
+            Cat Photo by{" "}
+            <a href="https://unsplash.com/@miklevasilyev?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+              Mikhail Vasilyev
+            </a>{" "}
+            on{" "}
+            <a href="https://unsplash.com/photos/MEb2jandkbc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+              Unsplash
+            </a>
+          </p>
+          <div style={{ height: "90vh" }}>&nbsp;</div>
+        </article>
+      </main>
+    </>
   );
 }

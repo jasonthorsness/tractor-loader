@@ -1,0 +1,91 @@
+"use client";
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { usePathname } from "next/navigation";
+import GitHub from "./github";
+
+function classNames(...classes: any) {
+  return classes.filter(Boolean).join(" ");
+}
+
+export default function Component() {
+  const currentRoute = usePathname();
+
+  const navigation: { name: string; href: string; level: number; current?: boolean }[] = [
+    { name: "Overview", href: "#section-overview", level: 0 },
+    { name: "Why", href: "#section-overview-why", level: 1 },
+    { name: "Installation", href: "#section-overview-installation", level: 1 },
+    { name: "Application", href: "#section-overview-application", level: 1 },
+    { name: "Conventions", href: "#section-overview-conventions", level: 1 },
+    { name: "Units", href: "#section-overview-conventions-units", level: 2 },
+    { name: "Image Layout", href: "#section-overview-conventions-imagelayout", level: 2 },
+    { name: "Extension", href: "#section-overview-extension", level: 1 },
+    { name: "Operations", href: "#section-overview-extension-operations", level: 2 },
+    { name: "Presets", href: "#section-overview-extension-presets", level: 2 },
+    { name: "Operations", href: "#section-operations", level: 0 },
+    { name: "Aspect", href: "#section-operations-aspect", level: 1 },
+    { name: "Crop", href: "#section-operations-crop", level: 1 },
+    { name: "Height", href: "#section-operations-height", level: 1 },
+    { name: "Width", href: "#section-operations-width", level: 1 },
+    { name: "Image Credits", href: "#section-image-credits", level: 0 },
+  ];
+
+  for (let i = 0; i < navigation.length; i++) {
+    navigation[i].current = currentRoute === navigation[i].href;
+  }
+
+  return (
+    <Disclosure as="nav">
+      {({ open }) => (
+        <>
+          <div className="mx-auto">
+            <div className="relative flex h-12">
+              <div className="relative flex ">
+                <div className="flex flex-shrink-0 items-center">
+                  <h1 className="m-0">🚜 Tractor Loader</h1>
+                </div>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center">
+                <GitHub href="https://github.com/jasonthorsness/tractor-loader" />
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <span className="absolute -inset-0.5" />
+                  <span className="sr-only">Open main menu</span>
+                  {open ? (
+                    <XMarkIcon className="block h-8 w-8" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block h-8 w-8" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
+            </div>
+          </div>
+          <Disclosure.Panel>
+            <div className="space-y-1 pb-1 pt-1">
+              {navigation.map((item) => (
+                <Disclosure.Button
+                  key={item.name}
+                  as="a"
+                  href={item.href}
+                  className={classNames(
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    `block rounded-md px-2 py-2 text-base font-medium`,
+                  )}
+                  aria-current={item.current ? "page" : undefined}
+                >
+                  <span
+                    className="whitespace-nowrap"
+                    style={{ paddingLeft: item.level * 16 + "px" }}
+                  >
+                    {item.name}
+                  </span>
+                </Disclosure.Button>
+              ))}
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
+  );
+}
