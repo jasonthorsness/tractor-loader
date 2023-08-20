@@ -1,14 +1,14 @@
 import Image, { StaticImageData } from "next/image";
 import Prism from "../prism";
 import img_z from "./cat.jpg";
-import img_0 from "./cat.jpg?crop=400,1300,800,2200&tractor";
-import img_1 from "./cat.jpg?myrotate=145&crop=o-800,o-800,o800,o800&tractor";
+import img_0 from "./cat.jpg?crop=200,750,400,1100&tractor";
+import img_1 from "./cat.jpg?myrotate=145&crop=o-300,o-300,o300,o300&tractor";
 import img_2 from "./cat.jpg?aspect=16:9;position:left&tractor";
 import img_3 from "./cat.jpg?mybanner&tractor";
 import img_4 from "./cat.jpg?crop=0,400,0,400&tractor";
-import img_5 from "./cat.jpg?crop=20%,40%,w600,h500&tractor";
+import img_5 from "./cat.jpg?crop=20%,40%,w200,h150&tractor";
 import img_6 from "./cat.jpg?crop=-90,-90,-90,-90;background:rgb(0,80,0)&tractor";
-import img_7 from "./cat.jpg?crop=o-220,o-110,o220,o110,r56%,44%&tractor";
+import img_7 from "./cat.jpg?crop=o-110,o-55,o110,o55,r56%,44%&tractor";
 import img_8 from "./cat.jpg?height=100&tractor";
 import img_9 from "./cat.jpg?width=120;kernel:nearest&tractor";
 
@@ -22,7 +22,7 @@ const ExampleImages_0 = () => {
       i="0"
       a={img_z}
       b={img_0}
-      t="crop=400,1300,800,2200"
+      t="crop=200,750,400,1100"
       e="Check the box to view live examples."
     />
   );
@@ -36,8 +36,8 @@ const ExampleImages_1 = () => {
       i="1"
       a={img_z}
       b={img_1}
-      t="myrotate=145&crop=o-800,o-800,o800,o800"
-      e="Rotate 145 degrees then crop to a 1600 by 1600 centered region"
+      t="myrotate=145&crop=o-300,o-300,o300,o300"
+      e="Rotate 145 degrees then crop to a 600 by 600 centered region"
     />
   );
 };
@@ -92,8 +92,8 @@ const ExampleImages_5 = () => {
       i="5"
       a={img_z}
       b={img_5}
-      t="crop=20%,40%,w600,h500"
-      e="Crop to a 600 by 500 region offset 20% from the left and 40% from the top."
+      t="crop=20%,40%,w200,h150"
+      e="Crop to a 200 by 150 region offset 20% from the left and 40% from the top."
     />
   );
 };
@@ -107,7 +107,7 @@ const ExampleImages_6 = () => {
       a={img_z}
       b={img_6}
       t="crop=-90,-90,-90,-90;background:rgb(0,80,0)"
-      e="Crop to a region 200 px greater than the image size in all directions, filling with green."
+      e="Crop to a region 90 px greater than the image size in all directions, filling with green."
     />
   );
 };
@@ -120,8 +120,8 @@ const ExampleImages_7 = () => {
       i="7"
       a={img_z}
       b={img_7}
-      t="crop=o-220,o-110,o220,o110,r56%,44%"
-      e="Crop to a 440 by 220 region offset 56% from the right and 44% from the top."
+      t="crop=o-110,o-55,o110,o55,r56%,44%"
+      e="Crop to a 220 by 110 region offset 56% from the right and 44% from the top."
     />
   );
 };
