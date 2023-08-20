@@ -2,7 +2,7 @@ import type { LoaderContext } from "webpack";
 import sharp from "sharp";
 import aspect from "./plugins/aspect";
 import crop from "./plugins/crop";
-import height from "./plugins/width";
+import height from "./plugins/height";
 import width from "./plugins/width";
 
 const defaultPlugins = {
