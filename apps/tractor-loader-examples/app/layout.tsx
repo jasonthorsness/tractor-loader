@@ -2,6 +2,7 @@ import "./globals.css";
 import "./prism.css";
 import og from "./og.jpg";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -44,7 +45,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className + " dark:bg-black"}>{children}</body>
+      <body className={inter.className + " dark:bg-black"}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
