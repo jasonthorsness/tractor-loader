@@ -72,6 +72,9 @@ function tryParse(plugins: PluginMap, presets: PresetMap, query: string): Parsed
 
   const expandedQueryParts: string[] = [];
   queryParts.forEach((queryPart: string) => {
+    if (queryPart == "") {
+      throw new Error(`extra & in query string`);
+    }
     const split = queryPart.split("=");
     if (split.length == 1 && presets[split[0]] != null) {
       expandedQueryParts.push(...presets[split[0]].split("&"));
