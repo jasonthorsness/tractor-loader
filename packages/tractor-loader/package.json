@@ -1,6 +1,7 @@
 {
   "name": "tractor-loader",
   "version": "0.1.4",
+  "description": "A webpack loader to help you with your crops and other image adjustments.",
   "repository": "https://github.com/jasonthorsness/tractor-loader",
   "license": "MIT",
   "author": "Jason Thorsness",
