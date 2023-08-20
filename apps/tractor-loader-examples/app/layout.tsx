@@ -13,6 +13,23 @@ export const metadata: Metadata = {
     "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚜</text></svg>",
   ],
   openGraph: {
+    title: "Tractor Loader",
+    description: "A webpack loader to help you with your crops and other image adjustments.",
+    images: [
+      {
+        url: og.src,
+        width: og.width,
+        height: og.height,
+        alt: "Tractor Loader",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@jasonthorsness",
+    creator: "@jasonthorsness",
+    description: "A webpack loader to help you with your crops and other image adjustments.",
+    title: "Tractor Loader",
     images: [
       {
         url: og.src,
