@@ -17,11 +17,7 @@ export default function Component() {
     { name: "Installation", href: "#section-overview-installation", level: 1 },
     { name: "Application", href: "#section-overview-application", level: 1 },
     { name: "Conventions", href: "#section-overview-conventions", level: 1 },
-    { name: "Units", href: "#section-overview-conventions-units", level: 2 },
-    { name: "Image Layout", href: "#section-overview-conventions-imagelayout", level: 2 },
     { name: "Extension", href: "#section-overview-extension", level: 1 },
-    { name: "Operations", href: "#section-overview-extension-operations", level: 2 },
-    { name: "Presets", href: "#section-overview-extension-presets", level: 2 },
     { name: "Operations", href: "#section-operations", level: 0 },
     { name: "Aspect", href: "#section-operations-aspect", level: 1 },
     { name: "Crop", href: "#section-operations-crop", level: 1 },
@@ -47,7 +43,7 @@ export default function Component() {
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center">
                 <GitHub href="https://github.com/jasonthorsness/tractor-loader" />
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600 hover:bg-gray-200 dark:hover:bg-gray-900">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -66,12 +62,7 @@ export default function Component() {
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    `block rounded-md px-2 py-2 text-base font-medium`,
-                  )}
+                  className={`block rounded-md px-2 py-2 text-base font-medium focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600 hover:bg-gray-200 dark:hover:bg-gray-900`}
                   aria-current={item.current ? "page" : undefined}
                 >
                   <span

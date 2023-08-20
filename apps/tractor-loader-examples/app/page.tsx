@@ -7,7 +7,7 @@ import img_2 from "./cat.jpg?aspect=16:9;position:left&tractor";
 import img_3 from "./cat.jpg?mybanner&tractor";
 import img_4 from "./cat.jpg?crop=0,400,0,400&tractor";
 import img_5 from "./cat.jpg?crop=20%,40%,w600,h500&tractor";
-import img_6 from "./cat.jpg?crop=-200,-200,-200,-200;background:rgb(0,100,0)&tractor";
+import img_6 from "./cat.jpg?crop=-90,-90,-90,-90;background:rgb(0,80,0)&tractor";
 import img_7 from "./cat.jpg?crop=o-220,o-110,o220,o110,r56%,44%&tractor";
 import img_8 from "./cat.jpg?height=100&tractor";
 import img_9 from "./cat.jpg?width=120;kernel:nearest&tractor";
@@ -106,7 +106,7 @@ const ExampleImages_6 = () => {
       i="6"
       a={img_z}
       b={img_6}
-      t="crop=-200,-200,-200,-200;background:rgb(0,100,0)"
+      t="crop=-90,-90,-90,-90;background:rgb(0,80,0)"
       e="Crop to a region 200 px greater than the image size in all directions, filling with green."
     />
   );
@@ -154,15 +154,18 @@ const ImageComparison = (props: {
   b: StaticImageData;
 }) => {
   return (
-    <>
-      <p className="mb-0 mt-0 pt-2">{props.e}</p>
-      <div className="block mb-2">
+    <div className="-mx-1">
+      <p className="ml-1 mb-0 mt-0 pt-2">{props.e}</p>
+      <div className="block mb-2 -mt-2 py-1 whitespace-nowrap overflow-x-auto">
         <input
           id={`example${props.i}`}
           type="checkbox"
-          className={`align-top mt-1.5 p-2 text-xs peer/example${props.i}`}
+          className={`align-top mt-1.5 p-2 text-xs ml-1 cursor-pointer peer/example${props.i}`}
         />
-        <label htmlFor={`example${props.i}`} className="ml-2 align-middle p-0 font-mono">
+        <label
+          htmlFor={`example${props.i}`}
+          className="ml-2 align-middle p-0 font-mono cursor-pointer bg-transparent"
+        >
           {props.t}
         </label>
         <div className={`hidden peer-checked/example${props.i}:block`}>
@@ -176,7 +179,7 @@ const ImageComparison = (props: {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -286,12 +289,12 @@ module.exports = nextConfig;`}
             and the value is operation-specific configuration.
           </p>
           <h3 id="section-overview-conventions">Conventions</h3>
-          <h4 id="section-overview-conventions-units">Units</h4>
+          <h4>Units</h4>
           <p>
             Default units are pixels. If a &apos;%&apos; sign is used, the unit is a percentage of
             width or height depending on context.
           </p>
-          <h4 id="section-overview-conventions-imagelayout">Image Layout</h4>
+          <h4>Image Layout</h4>
           <p>
             Tractor loader uses an (x, y) coordinate system where the top-left of the image is (0,
             0) and the bottom-right of the image is (width, height). The following shorthand applies
@@ -339,7 +342,11 @@ module.exports = nextConfig;`}
             </tbody>
           </table>
           <h3 id="section-overview-extension">Extension</h3>
-          <h4 id="section-overview-extension-operations">Operations</h4>
+          <p>
+            Tractor loader can be extended by defining new operations or by giving reusable preset
+            names to sequences of operations.
+          </p>
+          <h4>New Operations</h4>
           <p>
             New operations must implement a &quot;parse&quot; method that takes the value from the
             query string and returns a parsed value, and an &quot;apply&quot; method that takes that
@@ -381,7 +388,7 @@ module.exports = nextConfig;`}
           </p>
           <ExampleImages_1 />
           <p>Registered operations override built-in operations with the same name.</p>
-          <h4 id="section-overview-extension-presets">Presets</h4>
+          <h4>Presets</h4>
           <p>
             Common sequences of operations can be named as presets in the webpack configuration.
           </p>
