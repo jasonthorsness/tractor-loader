@@ -8,6 +8,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tractor-loader.vercel.app"),
   title: "Tractor Loader",
   description: "A webpack loader to help you with your crops and other image adjustments.",
   icons: [

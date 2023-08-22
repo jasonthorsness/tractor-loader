@@ -12,6 +12,8 @@ import img_7 from "./cat.jpg?crop=o-110,o-55,o110,o55,r56%,44%&tractor";
 import img_8 from "./cat.jpg?height=100&tractor";
 import img_9 from "./cat.jpg?width=120;kernel:nearest&tractor";
 
+import ExampleMDX from "./example.mdx";
+
 import Nav from "./nav";
 
 // peer/example0
@@ -278,6 +280,63 @@ module.exports = nextConfig;`}
   export = contents;
 }`}
           />
+          <h4>MDX</h4>
+          <p>
+            Tractor loader can be used with{" "}
+            <a href="https://nextjs.org/docs/app/building-your-application/configuring/mdx">
+              @next/mdx
+            </a>{" "}
+            using the tractor-loader-mdx remark plugin.
+          </p>
+          <Text t={`npm install tractor-loader-mdx`} />
+          <p>
+            Edit the next.config.mjs to include the plugin. The source for this site is an{" "}
+            <a href="https://github.com/jasonthorsness/tractor-loader/blob/main/apps/tractor-loader-examples/next.config.mjs">
+              example.
+            </a>
+          </p>
+          <JavaScript
+            t={`import tractorLoaderMDX from "tractor-loader-mdx";
+// ...
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [tractorLoaderMDX],
+  },
+});
+            `}
+          />
+          <p>
+            Then in your components handler, such as mdx-components.tsx, handle TractorLoaderImage.
+          </p>
+          <JavaScript
+            t={`import type { MDXComponents } from "mdx/types";
+import Image from "next/image";
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    TractorLoaderImage: (props) => {
+      return (
+        <Image
+          {...props}
+          alt={props.alt || ""}
+          className="my-0"
+          sizes="(max-width: 56rem) 50vw, 28rem"
+        />
+      );
+    },
+    ...components,
+  };
+}`}
+          />
+          <p>Any Tractor Loader syntax in your MDX will be processed. For example:</p>
+          <Text
+            t={`This is an MDX example:
+
+![img](./cat.jpg?myrotate=145&crop=o-300,o-300,o300,o300&width=200&tractor)
+            `}
+          />
+          <ExampleMDX />
           <h3 id="section-overview-application">Application</h3>
           <p>
             Tractor loader can be applied to any static image import by adding a query string ending
