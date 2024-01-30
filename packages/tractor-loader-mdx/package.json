@@ -1,7 +1,7 @@
 {
   "name": "tractor-loader-mdx",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A remark plugin that enables Tractor Loader for images in MDX files loaded through @next/mdx",
   "repository": "https://github.com/jasonthorsness/tractor-loader-mdx",
   "license": "MIT",
@@ -19,14 +19,14 @@
     "lint": "prettier --write --parser typescript \"{src,test}/**/*.{j,t}s\""
   },
   "devDependencies": {
-    "prettier": "^3.0.0",
-    "typescript": "^5.1.6",
-    "@types/mdast": "^3.0.0"
+    "@types/mdast": "^4.0.3",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "remark": "^14.0.0",
-    "remark-mdx": "^2.0.0",
-    "unified": "^10.0.0",
-    "unist-util-visit": "^4.0.0"
+    "remark": "^15.0.1",
+    "remark-mdx": "^3.0.0",
+    "unified": "^11.0.4",
+    "unist-util-visit": "^5.0.0"
   }
 }
