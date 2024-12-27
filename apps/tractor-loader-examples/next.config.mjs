@@ -3,6 +3,7 @@ import tractorLoaderMDX from "tractor-loader-mdx";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   webpack: (config, options) => {
     config.module.rules.forEach((rule) => {
       if (rule.loader === "next-image-loader") {

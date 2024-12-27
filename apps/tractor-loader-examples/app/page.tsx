@@ -333,7 +333,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           <Text
             t={`This is an MDX example:
 
-![img](./cat.jpg?myrotate=145&crop=o-300,o-300,o300,o300&width=200&tractor)
+![alt text](./cat.jpg?myrotate=145&crop=o-300,o-300,o300,o300&width=200&tractor "title text")
             `}
           />
           <ExampleMDX />

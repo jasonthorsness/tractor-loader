@@ -18,10 +18,13 @@ export const plugin: unified.Plugin<[], mdast.Root> = () => {
 
       const sanitizedURL = JSON.stringify(node.url);
 
+      const title = (node.title ?? "").replace('"', '\\"');
+      const alt = (node.alt ?? "").replace('"', '\\"');
+
       const parsedRoot = remark()
         .use(remarkMDX)
         .parse(
-          `import img${counter} from ${sanitizedURL};\n\n<TractorLoaderImage src={img${counter}} />`,
+          `import img${counter} from ${sanitizedURL};\n\n<TractorLoaderImage src={img${counter}} title={"${title}"} alt={"${alt}"} />`,
         );
 
       if (parsedRoot.children.length !== 2) {
