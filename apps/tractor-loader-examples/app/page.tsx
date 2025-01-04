@@ -123,7 +123,7 @@ const ExampleImages_7 = () => {
       i="7"
       a={img_z}
       b={img_7}
-      t="crop=o-110,o-55,o110,o55,r56%,44%"
+      t="crop=o-110,o-55,o110,o55,r56p,44p"
       e="Crop to a 220 by 110 region offset 56% from the right and 44% from the top."
     />
   );
