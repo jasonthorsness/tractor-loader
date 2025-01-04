@@ -15,6 +15,8 @@ import cat from "./cat.jpg?crop=0,100,0,100&tractor";
 Documentation and examples are deployed to Vercel:
 [https://tractor-loader.vercel.app/](https://tractor-loader.vercel.app/)
 
+A blog using Tractor Loader is [here](https://www.jasonthorsness.com/)
+
 The source code for the tractor loader is available
 [here](https://github.com/jasonthorsness/tractor-loader/tree/main/packages/tractor-loader).
 
