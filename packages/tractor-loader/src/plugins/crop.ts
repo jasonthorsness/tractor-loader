@@ -7,7 +7,7 @@ export default plugin;
 export interface ParsedCropPart {
   origin: "l" | "t" | "r" | "b" | "o" | "w" | "h";
   value: number;
-  unit: "" | "%";
+  unit: "" | "p";
 }
 
 export interface ParsedCrop {
@@ -36,12 +36,12 @@ function parse(v: string): ParsedCrop {
 
   const ox: ParsedCropPart | null =
     split.length === 4
-      ? { origin: "l", value: 50, unit: "%" }
+      ? { origin: "l", value: 50, unit: "p" }
       : parsePart(split[4], "l", ["l", "r"]);
 
   const oy: ParsedCropPart | null =
     split.length === 4
-      ? { origin: "t", value: 50, unit: "%" }
+      ? { origin: "t", value: 50, unit: "p" }
       : parsePart(split[5], "t", ["t", "b"]);
 
   return { ax, ay, bx, by, ox, oy, options };
@@ -91,9 +91,9 @@ function parsePart(
       break;
   }
 
-  let unit: "" | "%" = "";
-  if (v.endsWith("%")) {
-    unit = "%";
+  let unit: "" | "p" = "";
+  if (v.endsWith("p")) {
+    unit = "p";
     v = v.slice(0, -1);
   }
 
@@ -198,7 +198,7 @@ function resolveCrop(v: ParsedCrop, w: number, h: number): ResolvedCrop {
 
 function resolveCropPart(v: ParsedCropPart, o: number, r: number, m: number): number {
   let delta = v.value;
-  if (v.unit === "%") {
+  if (v.unit === "p") {
     delta = (m * v.value) / 100;
   }
   delta = Math.round(delta);

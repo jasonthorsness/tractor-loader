@@ -2,15 +2,16 @@ import Image, { StaticImageData } from "next/image";
 import Prism from "../prism";
 import img_z from "./cat.jpg";
 import img_0 from "./cat.jpg?crop=200,750,400,1100&tractor";
-import img_1 from "./cat.jpg?myrotate=145&crop=o-300,o-300,o300,o300&tractor";
+import img_1 from "./cat.jpg?myblur=15&aspect=1:1&tractor";
 import img_2 from "./cat.jpg?aspect=16:9;position:left&tractor";
 import img_3 from "./cat.jpg?mybanner&tractor";
 import img_4 from "./cat.jpg?crop=0,400,0,400&tractor";
-import img_5 from "./cat.jpg?crop=20%,40%,w200,h150&tractor";
+import img_5 from "./cat.jpg?crop=20p,40p,w200,h150&tractor";
 import img_6 from "./cat.jpg?crop=-90,-90,-90,-90;background:rgb(0,80,0)&tractor";
-import img_7 from "./cat.jpg?crop=o-110,o-55,o110,o55,r56%,44%&tractor";
+import img_7 from "./cat.jpg?crop=o-110,o-55,o110,o55,r56p,44p&tractor";
 import img_8 from "./cat.jpg?height=100&tractor";
 import img_9 from "./cat.jpg?width=120;kernel:nearest&tractor";
+import img_10 from "./cat.jpg?rotate=145;background:rgb(60,60,60)&tractor";
 
 import ExampleMDX from "./example.mdx";
 
@@ -38,8 +39,8 @@ const ExampleImages_1 = () => {
       i="1"
       a={img_z}
       b={img_1}
-      t="myrotate=145&crop=o-300,o-300,o300,o300"
-      e="Rotate 145 degrees then crop to a 600 by 600 centered region"
+      t="myblur=15&aspect=1:1"
+      e="Blur an image by 15 then make it square"
     />
   );
 };
@@ -94,7 +95,7 @@ const ExampleImages_5 = () => {
       i="5"
       a={img_z}
       b={img_5}
-      t="crop=20%,40%,w200,h150"
+      t="crop=20p,40p,w200,h150"
       e="Crop to a 200 by 150 region offset 20% from the left and 40% from the top."
     />
   );
@@ -144,6 +145,20 @@ const ExampleImages_9 = () => {
       b={img_9}
       t="width=120;kernel:nearest"
       e="Resize to 120 pixels wide with the nearest-neighbor kernel"
+    />
+  );
+};
+
+// peer/example10
+// peer-checked/example10:block
+const ExampleImages_10 = () => {
+  return (
+    <ImageComparison
+      i="1"
+      a={img_z}
+      b={img_10}
+      t="rotate=145;background:rgb(60,60,60)"
+      e="Rotate 145 degrees with a rgb(60,60,60) background"
     />
   );
 };
@@ -333,7 +348,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           <Text
             t={`This is an MDX example:
 
-![alt text](./cat.jpg?myrotate=145&crop=o-300,o-300,o300,o300&width=200&tractor "title text")
+![alt text](./cat.jpg?rotate=145&crop=o-300,o-300,o300,o300&width=200&tractor "title text")
             `}
           />
           <ExampleMDX />
@@ -352,7 +367,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           <h3 id="section-overview-conventions">Conventions</h3>
           <h4>Units</h4>
           <p>
-            Default units are pixels. If a &apos;%&apos; sign is used, the unit is a percentage of
+            Default units are pixels. If a &apos;p&apos; sign is used, the unit is a percentage of
             width or height depending on context.
           </p>
           <h4>Image Layout</h4>
@@ -428,7 +443,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           />
           <p>
             New operations are registered via loader options. For example, here is a registration
-            for an operation to rotate an image.
+            for an operation to blur an image.
           </p>
           <JavaScript
             t={`// ... in next.config.js webpack configuration ...
@@ -436,9 +451,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   loader: "tractor-loader",
   options: {
     plugins: {
-      myrotate: {
+      myblur: {
         parse: (v) => Number(v),
-        apply: (v, _, working) => working.rotate(v),
+        apply: (v, _, working) => working.blur(v),
       }
     }
   }
@@ -459,7 +474,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   loader: "tractor-loader",
   options: {
     presets: {
-      mybanner: "crop=20%,0,20%,0&aspect=16:9",
+      mybanner: "crop=20p,0,20p,0&aspect=16:9",
     }
   }
 },`}
@@ -503,7 +518,7 @@ options   sharp options
           />
           <p>
             Each part is provided as an optional origin, followed by a value, followed by an
-            optional &apos;%&apos; to use percent units. For example, l20% refers to an edge offset
+            optional &apos;p&apos; to use percent units. For example, l20p refers to an edge offset
             20% of the image width from the left, while b100 refers to an edge offset 100 pixels
             from the bottom (offset direction is flipped for r and b origins). When an origin is not
             provided, the default origin for that part is applied.
@@ -586,6 +601,20 @@ options  sharp options`}
           />
           <h4>Examples</h4>
           <ExampleImages_9 />
+          <h3 id="section-operations-height">Rotate</h3>
+          <p>
+            Rotates an image. See{" "}
+            <a href="https://sharp.pixelplumbing.com/api-operation#rotate">sharp rotate</a> for
+            available options.
+          </p>
+          <h4>Syntax</h4>
+          <Text
+            t={`rotate=v[;option:value]...
+v        amount to rotate
+options  sharp options`}
+          />
+          <h4>Examples</h4>
+          <ExampleImages_10 />
           <h3 id="section-image-credits">Image Credits</h3>
           <p>
             Cat Photo by{" "}

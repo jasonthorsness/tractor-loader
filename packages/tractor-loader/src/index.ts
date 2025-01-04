@@ -4,12 +4,14 @@ import aspect from "./plugins/aspect";
 import crop from "./plugins/crop";
 import height from "./plugins/height";
 import width from "./plugins/width";
+import rotate from "./plugins/rotate";
 
 const defaultPlugins = {
   aspect,
   crop,
   height,
   width,
+  rotate,
 };
 
 export interface Plugin {
@@ -37,7 +39,8 @@ export default function loader(this: LoaderContext<Options>, source: Buffer): Bu
   const plugins: PluginMap = { ...defaultPlugins, ...options.plugins };
   const presets: PresetMap = options.presets;
 
-  const parsed = tryParse(plugins, presets, this.resourceQuery);
+  const unescapedQuery = decodeURIComponent(this.resourceQuery);
+  const parsed = tryParse(plugins, presets, unescapedQuery);
   if (parsed == null) {
     return source;
   }

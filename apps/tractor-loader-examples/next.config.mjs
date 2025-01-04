@@ -16,13 +16,13 @@ const nextConfig = {
             loader: "tractor-loader",
             options: {
               plugins: {
-                myrotate: {
+                myblur: {
                   parse: (v) => Number(v),
-                  apply: (v, _, working) => working.rotate(v),
+                  apply: (v, _, working) => working.blur(v),
                 },
               },
               presets: {
-                mybanner: "crop=20%,0,20%,0&aspect=16:9",
+                mybanner: "crop=20p,0,20p,0&aspect=16:9",
               },
             },
           },
