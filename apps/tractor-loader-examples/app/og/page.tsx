@@ -1,8 +1,8 @@
 import Image from "next/image";
-import cat1 from "../cat.jpg?crop=0,0,0,0,40%,45%&width=600&aspect=1200:630&tractor";
-import cat2 from "../cat.jpg?crop=o-40%,o-40%,o40%,o40%,40%,45%&width=600&aspect=1200:630&tractor";
-import cat3 from "../cat.jpg?crop=o-30%,o-30%,o30%,o30%,40%,45%&width=600&aspect=1200:630&tractor";
-import cat4 from "../cat.jpg?crop=o-20%,o-20%,o20%,o20%,40%,45%&width=600&aspect=1200:630&tractor";
+import cat1 from "../cat.jpg?crop=0,0,0,0,40p,45p&width=600&aspect=1200:630&tractor";
+import cat2 from "../cat.jpg?crop=o-40p,o-40p,o40p,o40p,40p,45p&width=600&aspect=1200:630&tractor";
+import cat3 from "../cat.jpg?crop=o-30p,o-30p,o30p,o30p,40p,45p&width=600&aspect=1200:630&tractor";
+import cat4 from "../cat.jpg?crop=o-20p,o-20p,o20p,o20p,40p,45p&width=600&aspect=1200:630&tractor";
 
 export default function Social() {
   return (
